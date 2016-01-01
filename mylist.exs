@@ -16,4 +16,15 @@ defmodule MyList do
     _max(tail, head)
   end 
   defp _max([ _ | tail ], highest), do: _max(tail, highest)
+
+  def caesar([], _n), do: 0
+  def caesar([ head | tail ], n) when (head + n) > ?z do
+    [(head + n - 26) | caesar(tail, n)]
+  end
+  def caesar([ head | tail ], n), do: [head + n | caesar(tail, n)]
+
+  def span(from, to) when from <= to do
+    [from | span(from + 1, to)]
+  end
+  def span(_, _), do: [] 
 end
